@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'seleniumGradleBase'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets{
+    main{
+        java{
+            srcDirs 'src/main'
+        }
+    }
+    test{
+        java{
+            srcDirs 'src/test'
+        }
+    }
+}
+
+dependencies {
+    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
+    compile fileTree(dir: 'libs', include:'*.jar')
+}
+
+test{
+    useJUnitPlatform()
+}
